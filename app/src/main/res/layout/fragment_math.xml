@@ -1,0 +1,153 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ui.math.fragment.MathFragment">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/backImageButton"
+        style="@style/MainView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/heartsConstraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/heartsConstraintLayout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/heartsConstraintLayout"
+        style="@style/MainView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heartsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="@color/gray_dark"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/heartImageView"
+            app:layout_constraintEnd_toStartOf="@+id/heartImageView"
+            app:layout_constraintStart_toEndOf="@+id/plusImageView"
+            app:layout_constraintTop_toTopOf="@+id/heartImageView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/heartImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4dp"
+            android:src="@drawable/heart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/heartsTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/plusImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4dp"
+            android:src="@drawable/plus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/heartsTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/timeTextView"
+        style="@style/BlackTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
+        android:text="@string/_5"
+        android:textAllCaps="true"
+        android:textSize="@dimen/_32sp"
+        app:layout_constraintBottom_toBottomOf="@+id/timerImageView"
+        app:layout_constraintEnd_toEndOf="@+id/timerImageView"
+        app:layout_constraintStart_toStartOf="@+id/timerImageView"
+        app:layout_constraintTop_toTopOf="@+id/timerImageView"
+        app:layout_constraintVertical_bias="0.40" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/descriptionTextView"
+        style="@style/BlackTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32dp"
+        android:text="@string/descriptionMath"
+        android:textSize="@dimen/_16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTextView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/expression1TextView"
+        style="@style/MainView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_128dp"
+        android:layout_marginHorizontal="@dimen/_64dp"
+        android:gravity="center"
+        android:text="@string/expression1"
+        android:textSize="@dimen/_30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTextView"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/expression2TextView"
+        style="@style/MainView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_128dp"
+        android:layout_marginTop="@dimen/_32dp"
+        android:gravity="center"
+        android:text="@string/expression2"
+        android:textSize="@dimen/_30sp"
+        app:layout_constraintEnd_toEndOf="@+id/expression1TextView"
+        app:layout_constraintStart_toStartOf="@+id/expression1TextView"
+        app:layout_constraintTop_toBottomOf="@+id/expression1TextView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/scoreTextView"
+        style="@style/BlackTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_64dp"
+        android:text="@string/_0"
+        android:textAllCaps="true"
+        android:textSize="@dimen/_32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heartsConstraintLayout" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/winGif"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/wingif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerImageView" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/timerImageView"
+        android:layout_width="@dimen/_85dp"
+        android:layout_height="@dimen/_110dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:background="@drawable/timer_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

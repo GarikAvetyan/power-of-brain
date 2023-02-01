@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Power of Brain</string>
+    <!-- Global -->
+    <string name="math">Math</string>
+    <string name="action">Action</string>
+    <string name="vision">Vision</string>
+    <string name="memory">Memory</string>
+    <string name="patience">Patience</string>
+    <string name="time">Time</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="play">Play</string>
+    <string name="ads">ads</string>
+    <string name="zero">0</string>
+    <string name="descriptionMath">Which One Is Greater?</string>
+    <string name="expression1">expression1</string>
+    <string name="expression2">expression2</string>
+    <string name="best_score">Best Score</string>
+    <string name="number">number</string>
+    <string name="score">Score</string>
+    <string name="_5">5</string>
+    <string name="_0">0</string>
+</resources>
