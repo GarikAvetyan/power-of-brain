@@ -8,6 +8,7 @@ import com.fbf.common.base.BaseCommonFragment
 import com.fbf.powerofbrain.R
 import com.fbf.powerofbrain.databinding.FragmentHomeBinding
 import com.fbf.powerofbrain.databinding.FragmentPlayBinding
+import ui.action.fragment.ActionFragment
 import ui.math.fragment.MathFragment
 
 class PlayFragment : BaseCommonFragment(), View.OnClickListener {
@@ -22,10 +23,15 @@ class PlayFragment : BaseCommonFragment(), View.OnClickListener {
 
         backButtonBlock()
 
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.backImageButton.setOnClickListener(this)
         binding.mathConstraintLayout.setOnClickListener(this)
-
-        return view
+        binding.actionConstraintLayout.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -38,6 +44,13 @@ class PlayFragment : BaseCommonFragment(), View.OnClickListener {
                 val mathFragment = MathFragment()
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.mainFrameLayout, mathFragment)
+                    .addToBackStack("")
+                    .commit()
+            }
+            binding.actionConstraintLayout -> {
+                val actionFragment = ActionFragment()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainFrameLayout, actionFragment)
                     .addToBackStack("")
                     .commit()
             }

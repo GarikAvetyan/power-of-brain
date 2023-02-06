@@ -40,6 +40,18 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
 
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentMathBinding.inflate(layoutInflater)
+        val view = binding.root
+        millisinFuture = 6000L
+
+        backButtonBlock()
+        return view
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.winGif.visibility = View.INVISIBLE
@@ -50,17 +62,6 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
         binding.expression2TextView.setOnClickListener(this)
 
         expressionTextViewsChange()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMathBinding.inflate(layoutInflater)
-        val view = binding.root
-
-        backButtonBlock()
-        return view
     }
 
     override fun onClick(view: View?) {
@@ -119,7 +120,7 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
         loseFragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.mainFrameLayout, loseFragment)
-            .addToBackStack("")
+            .addToBackStack("Math")
             .commit()
     }
 
@@ -151,7 +152,6 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
             override fun onFinish() {
                 lose()
             }
-
         }
     }
 }

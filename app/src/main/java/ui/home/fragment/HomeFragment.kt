@@ -12,7 +12,7 @@ import com.fbf.powerofbrain.R
 import com.fbf.powerofbrain.databinding.FragmentHomeBinding
 import ui.play.fragment.PlayFragment
 
-class HomeFragment : BaseCommonFragment(), View.OnClickListener{
+class HomeFragment : BaseCommonFragment(), View.OnClickListener {
     private lateinit var binding: FragmentHomeBinding
     private val playFragment = PlayFragment()
 
@@ -25,10 +25,15 @@ class HomeFragment : BaseCommonFragment(), View.OnClickListener{
         binding = FragmentHomeBinding.inflate(layoutInflater)
         val view = binding.root
 
-        binding.playButton.setOnClickListener(this)
         backButtonBlock()
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.playButton.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {

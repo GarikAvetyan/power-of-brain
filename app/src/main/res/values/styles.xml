@@ -15,4 +15,9 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="WhiteView">
+        <item name="android:background">@drawable/shape_button_white</item>
+    </style>
+
 </resources>

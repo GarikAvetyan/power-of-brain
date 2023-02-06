@@ -12,6 +12,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ui.home.fragment.HomeFragment
+import util.Constants
 
 class LoseFragment : BaseCommonFragment(), View.OnClickListener {
     private lateinit var binding: FragmentLoseBinding
@@ -35,8 +36,22 @@ class LoseFragment : BaseCommonFragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         GlobalScope.launch {
-            binding.bestScoreNumberTextView.text =
-                MyApplication.database.bestScoresDao().getBestScores()[0].mathBestScores.toString()
+            val count = requireActivity().supportFragmentManager.backStackEntryCount
+            val backStackEntry =
+                requireActivity().supportFragmentManager.getBackStackEntryAt(count - 1)
+
+            when (backStackEntry.name) {
+                Constants.MATH -> {
+                    binding.bestScoreNumberTextView.text =
+                        MyApplication.database.bestScoresDao()
+                            .getBestScores()[0].mathBestScores.toString()
+                }
+                Constants.ACTION -> {
+                    binding.bestScoreNumberTextView.text =
+                        MyApplication.database.bestScoresDao()
+                            .getBestScores()[0].actionBestScores.toString()
+                }
+            }
         }
 
         binding.restartImageView.setOnClickListener(this)
@@ -53,6 +68,7 @@ class LoseFragment : BaseCommonFragment(), View.OnClickListener {
                 val homeFragment = HomeFragment()
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.mainFrameLayout, homeFragment)
+                    .remove(this)
                     .commit()
             }
         }
