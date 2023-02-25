@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import ui.action.model.ActionGame
 import ui.lose.fragment.LoseFragment
 
-class ActionFragment : BaseCommonFragment(), View.OnClickListener {
+class ActionFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentActionBinding
     private lateinit var actionGame: ActionGame
     private lateinit var tiles: List<ImageView>
@@ -94,6 +94,7 @@ class ActionFragment : BaseCommonFragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
+                timer.cancel()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@ActionFragment)
                         .commit()
@@ -217,6 +218,7 @@ class ActionFragment : BaseCommonFragment(), View.OnClickListener {
         }
     }
 
+    //When win work this method
     private fun win(index: Int) {
         actionGame.score++
         binding.scoreTextView.text = actionGame.score.toString()
@@ -247,6 +249,7 @@ class ActionFragment : BaseCommonFragment(), View.OnClickListener {
         }
     }
 
+    //When lose work this method
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
         timer.cancel()
@@ -285,5 +288,12 @@ class ActionFragment : BaseCommonFragment(), View.OnClickListener {
             }
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        actionGame.clear()
+    }
+
+
 
 }

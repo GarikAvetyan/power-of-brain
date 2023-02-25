@@ -12,7 +12,7 @@ import com.fbf.powerofbrain.R
 import com.fbf.powerofbrain.databinding.FragmentHomeBinding
 import ui.play.fragment.PlayFragment
 
-class HomeFragment : BaseCommonFragment(), View.OnClickListener {
+class HomeFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentHomeBinding
     private val playFragment = PlayFragment()
 

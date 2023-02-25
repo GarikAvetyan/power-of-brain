@@ -7,22 +7,22 @@ class MathGame {
     var operator1 = operators[(0..1).random()]
     var operator2 = operators[(0..1).random()]
     var number1 = if (operator1 == '+') {
-        (5..40).random()
+        (7..50).random()
     } else {
         (2..11).random()
     }
     var number2 = if (operator1 == '+') {
-        (5..40).random()
+        (7..50).random()
     } else {
         (2..11).random()
     }
     var number3 = if (operator2 == '+') {
-        (5..40).random()
+        (7..50).random()
     } else {
         (2..11).random()
     }
     var number4 = if (operator2 == '+') {
-        (5..40).random()
+        (7..50).random()
     } else {
         (2..11).random()
     }
@@ -55,22 +55,22 @@ class MathGame {
         operator1 = operators[(0..1).random()]
         operator2 = operators[(0..1).random()]
         number1 = if (operator1 == '+') {
-            (5..40).random()
+            (7..50).random()
         } else {
             (2..11).random()
         }
         number2 = if (operator1 == '+') {
-            (5..40).random()
+            (7..50).random()
         } else {
             (2..11).random()
         }
         number3 = if (operator2 == '+') {
-            (5..40).random()
+            (7..50).random()
         } else {
             (2..11).random()
         }
         number4 = if (operator2 == '+') {
-            (5..40).random()
+            (7..50).random()
         } else {
             (2..11).random()
         }

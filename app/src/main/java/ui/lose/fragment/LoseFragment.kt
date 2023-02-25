@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import ui.home.fragment.HomeFragment
 import util.Constants
 
-class LoseFragment : BaseCommonFragment(), View.OnClickListener {
+class LoseFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentLoseBinding
 
 
@@ -50,6 +50,16 @@ class LoseFragment : BaseCommonFragment(), View.OnClickListener {
                     binding.bestScoreNumberTextView.text =
                         MyApplication.database.bestScoresDao()
                             .getBestScores()[0].actionBestScores.toString()
+                }
+                Constants.MEMORY -> {
+                    binding.bestScoreNumberTextView.text =
+                        MyApplication.database.bestScoresDao()
+                            .getBestScores()[0].memoryBestScores.toString()
+                }
+                Constants.VISION -> {
+                    binding.bestScoreNumberTextView.text =
+                        MyApplication.database.bestScoresDao()
+                            .getBestScores()[0].visionBestScores.toString()
                 }
             }
         }

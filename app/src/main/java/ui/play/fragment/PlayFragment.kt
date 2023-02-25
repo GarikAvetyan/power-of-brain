@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.fbf.common.base.BaseCommonFragment
 import com.fbf.powerofbrain.R
-import com.fbf.powerofbrain.databinding.FragmentHomeBinding
 import com.fbf.powerofbrain.databinding.FragmentPlayBinding
 import ui.action.fragment.ActionFragment
 import ui.math.fragment.MathFragment
+import ui.memory.fragment.MemoryFragment
+import ui.patience.fragment.PatienceFragment
+import ui.vision.fragment.VisionFragment
 
-class PlayFragment : BaseCommonFragment(), View.OnClickListener {
+class PlayFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentPlayBinding
 
     override fun onCreateView(
@@ -32,28 +34,47 @@ class PlayFragment : BaseCommonFragment(), View.OnClickListener {
         binding.backImageButton.setOnClickListener(this)
         binding.mathConstraintLayout.setOnClickListener(this)
         binding.actionConstraintLayout.setOnClickListener(this)
+        binding.memoryConstraintLayout.setOnClickListener(this)
+        binding.visionConstraintLayout.setOnClickListener(this)
+        binding.patienceConstraintLayout.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
-                requireActivity().supportFragmentManager.popBackStack()
-                requireActivity().supportFragmentManager.fragments.clear()
+                requireActivity().supportFragmentManager.apply {
+                    beginTransaction().remove(this@PlayFragment)
+                        .commit()
+                    popBackStack()
+                }
             }
             binding.mathConstraintLayout -> {
                 val mathFragment = MathFragment()
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainFrameLayout, mathFragment)
-                    .addToBackStack("")
-                    .commit()
+                replaceFragment(mathFragment)
             }
             binding.actionConstraintLayout -> {
                 val actionFragment = ActionFragment()
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainFrameLayout, actionFragment)
-                    .addToBackStack("")
-                    .commit()
+                replaceFragment(actionFragment)
+            }
+            binding.memoryConstraintLayout -> {
+                val memoryFragment = MemoryFragment()
+                replaceFragment(memoryFragment)
+            }
+            binding.visionConstraintLayout -> {
+                val visionFragment = VisionFragment()
+                replaceFragment(visionFragment)
+            }
+            binding.patienceConstraintLayout -> {
+                val patienceFragment = PatienceFragment()
+                replaceFragment(patienceFragment)
             }
         }
+    }
+
+    private fun replaceFragment(fragment: BaseCommonFragment) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.mainFrameLayout, fragment)
+            .addToBackStack("")
+            .commit()
     }
 }

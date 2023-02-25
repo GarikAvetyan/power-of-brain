@@ -15,13 +15,13 @@ import kotlinx.coroutines.*
 import ui.lose.fragment.LoseFragment
 import ui.math.model.MathGame
 
-class MathFragment : BaseCommonFragment(), View.OnClickListener {
+class MathFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentMathBinding
     private lateinit var mathGame: MathGame
     private var millisinFuture = 6000L
     private var timer = timer()
 
-    private val timerWinGif = object : CountDownTimer(1500, 1500) {
+    private val timerWinGif = object : CountDownTimer(1000, 1000) {
         override fun onTick(remaining: Long) {
             binding.winGif.visibility = View.VISIBLE
             binding.expression1TextView.isClickable = false
@@ -47,6 +47,7 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
         binding = FragmentMathBinding.inflate(layoutInflater)
         val view = binding.root
         millisinFuture = 6000L
+        mathGame = MathGame()
 
         backButtonBlock()
         return view
@@ -54,8 +55,6 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.winGif.visibility = View.INVISIBLE
-        mathGame = MathGame()
 
         binding.backImageButton.setOnClickListener(this)
         binding.expression1TextView.setOnClickListener(this)
@@ -100,9 +99,11 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
             "${mathGame.number3} ${mathGame.operator2} ${mathGame.number4}"
     }
 
+    //When lose work this method
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
         timer.cancel()
+
         val loseFragment = LoseFragment()
 
         GlobalScope.launch {
@@ -124,6 +125,7 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
             .commit()
     }
 
+    //When win work this method
     private fun win() {
         mathGame.score++
         binding.scoreTextView.text = mathGame.score.toString()
@@ -132,11 +134,11 @@ class MathFragment : BaseCommonFragment(), View.OnClickListener {
             5 -> {
                 millisinFuture = 5000L
             }
-            10 -> {
-                millisinFuture = 3000L
+            15 -> {
+                millisinFuture = 4000L
             }
             20 -> {
-                millisinFuture = 2000L
+                millisinFuture = 3000L
             }
         }
         timerWinGif.start()

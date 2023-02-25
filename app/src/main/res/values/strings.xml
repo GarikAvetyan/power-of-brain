@@ -23,6 +23,9 @@
     <string name="score">Score</string>
     <string name="_5">5</string>
     <string name="_0">0</string>
-    <string name="tap_on_black_tiles">Tap on black tiles!!</string>
+    <string name="descriptionMamory">Tap on black tiles!!</string>
     <string name="_10">10</string>
+    <string name="sort_right">Sort Right!</string>
+    <string name="descriptionVision">Remeber and Rebuild Lineups!</string>
+    <string name="_3">3</string>
 </resources>
