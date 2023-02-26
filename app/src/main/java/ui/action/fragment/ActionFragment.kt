@@ -1,5 +1,6 @@
 package ui.action.fragment
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -89,6 +90,10 @@ class ActionFragment : BaseCommonFragment() {
         binding.tile15ImageView.setOnClickListener(this)
         binding.tile16ImageView.setOnClickListener(this)
         binding.tableConstraintLayout.setOnClickListener(this)
+
+        for(i in tiles){
+            rotationOpenY(i)
+        }
     }
 
     override fun onClick(view: View?) {
@@ -292,6 +297,13 @@ class ActionFragment : BaseCommonFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         actionGame.clear()
+    }
+
+    private fun rotationOpenY(view: View) {
+        ObjectAnimator.ofFloat(view, View.ROTATION_Y, 270f, 360f).apply {
+            duration = 500
+            start()
+        }
     }
 
 

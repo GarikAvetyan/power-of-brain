@@ -126,6 +126,7 @@ class MemoryFragment : BaseCommonFragment() {
         when (view) {
             binding.backImageButton -> {
                 timer.cancel()
+                timerWinGif.cancel()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@MemoryFragment)
                         .commit()
@@ -220,6 +221,7 @@ class MemoryFragment : BaseCommonFragment() {
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
         timer.cancel()
+        timerWinGif.cancel()
         clearPoints()
         sequence = 0
         val loseFragment = LoseFragment()

@@ -3,6 +3,8 @@ package ui.vision.fragment
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,19 +25,35 @@ class VisionFragment : BaseCommonFragment() {
     private lateinit var visionGame: VisionGame
     private var millisinFuture = 4000L
     private var timer = timer()
-    private val timerWinGif = object : CountDownTimer(1500, 1500) {
+    private val timerWinGif = object : CountDownTimer(1000, 1000) {
         override fun onTick(remaining: Long) {
             binding.winGif.visibility = View.VISIBLE
         }
 
         override fun onFinish() {
-            binding.winGif.visibility = View.INVISIBLE
             buttonsBlock()
-            visionGame.updateImages()
-            filterImages()
-            binding.chooseConstraintLayout.visibility = View.INVISIBLE
-            timer = timer()
-            timer.start()
+
+            for (i in images) {
+                rotationHideY(i)
+            }
+            rotationHideX(binding.blueCircleImageView)
+            rotationHideX(binding.greenCircleImageView)
+            rotationHideX(binding.redCircleImageView)
+            rotationHideX(binding.blueTriangleImageView)
+            rotationHideX(binding.greenTriangleImageView)
+            rotationHideX(binding.redTriangleImageView)
+            rotationHideX(binding.blueSquareImageView)
+            rotationHideX(binding.greenSquareImageView)
+            rotationHideX(binding.redSquareImageView)
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.winGif.visibility = View.INVISIBLE
+                visionGame.updateImages()
+                filterImages()
+                binding.chooseConstraintLayout.visibility = View.INVISIBLE
+                timer = timer()
+                timer.start()
+            }, 500)
         }
 
     }
@@ -92,7 +110,6 @@ class VisionFragment : BaseCommonFragment() {
         object : CountDownTimer(millisinFuture, 1000) {
             override fun onTick(remaining: Long) {
                 binding.timeTextView.text = (remaining / 1000).toString()
-
             }
 
             override fun onFinish() {
@@ -150,10 +167,7 @@ class VisionFragment : BaseCommonFragment() {
                     setImageResource(visionGame.selectedImages[i])
                     visibility = View.VISIBLE
                 }
-                ObjectAnimator.ofFloat(images[i], View.ROTATION_Y, 90f, 180f).apply {
-                    duration = 500
-                    start()
-                }
+                rotationOpenY(images[i])
             } else if (i < 5) {
                 images[i].visibility = View.GONE
             } else {
@@ -173,6 +187,7 @@ class VisionFragment : BaseCommonFragment() {
         }
     }
 
+    //When win work this method
     private fun win() {
         if (visionGame.queue == visionGame.selectedImages.size) {
             uncompressedButtons()
@@ -185,6 +200,9 @@ class VisionFragment : BaseCommonFragment() {
                 6 -> {
                     millisinFuture += 1000L
                 }
+                9 -> {
+                    millisinFuture += 1000L
+                }
             }
             binding.scoreTextView.text = visionGame.score.toString()
 
@@ -193,9 +211,11 @@ class VisionFragment : BaseCommonFragment() {
         }
     }
 
+    //When lose work this method
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
         timer.cancel()
+        timerWinGif.cancel()
         val loseFragment = LoseFragment()
 
         GlobalScope.launch {
@@ -252,15 +272,15 @@ class VisionFragment : BaseCommonFragment() {
     }
 
     private fun buttonShow() {
-        rotationX(binding.blueCircleImageView)
-        rotationX(binding.greenCircleImageView)
-        rotationX(binding.redCircleImageView)
-        rotationX(binding.blueTriangleImageView)
-        rotationX(binding.greenTriangleImageView)
-        rotationX(binding.redTriangleImageView)
-        rotationX(binding.blueSquareImageView)
-        rotationX(binding.greenSquareImageView)
-        rotationX(binding.redSquareImageView)
+        rotationOpenX(binding.blueCircleImageView)
+        rotationOpenX(binding.greenCircleImageView)
+        rotationOpenX(binding.redCircleImageView)
+        rotationOpenX(binding.blueTriangleImageView)
+        rotationOpenX(binding.greenTriangleImageView)
+        rotationOpenX(binding.redTriangleImageView)
+        rotationOpenX(binding.blueSquareImageView)
+        rotationOpenX(binding.greenSquareImageView)
+        rotationOpenX(binding.redSquareImageView)
     }
 
     private fun buttonOpen() {
@@ -288,7 +308,7 @@ class VisionFragment : BaseCommonFragment() {
     }
 
     private fun rotationHideY(view: View) {
-        ObjectAnimator.ofFloat(view, View.ROTATION_Y, 180f, 270f).apply {
+        ObjectAnimator.ofFloat(view, View.ROTATION_Y, 0f, 90f).apply {
             duration = 500
             start()
         }
@@ -301,8 +321,15 @@ class VisionFragment : BaseCommonFragment() {
         }
     }
 
-    private fun rotationX(view: View) {
+    private fun rotationOpenX(view: View) {
         ObjectAnimator.ofFloat(view, View.ROTATION_X, 270f, 360f).apply {
+            duration = 500
+            start()
+        }
+    }
+
+    private fun rotationHideX(view: View) {
+        ObjectAnimator.ofFloat(view, View.ROTATION_X, 0f,90f).apply {
             duration = 500
             start()
         }

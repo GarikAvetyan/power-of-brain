@@ -1,5 +1,6 @@
 package ui.math.fragment
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,7 +11,6 @@ import application.MyApplication
 import com.fbf.common.base.BaseCommonFragment
 import com.fbf.powerofbrain.R
 import com.fbf.powerofbrain.databinding.FragmentMathBinding
-import com.fbf.room.bestscores.model.BestScores
 import kotlinx.coroutines.*
 import ui.lose.fragment.LoseFragment
 import ui.math.model.MathGame
@@ -26,14 +26,20 @@ class MathFragment : BaseCommonFragment() {
             binding.winGif.visibility = View.VISIBLE
             binding.expression1TextView.isClickable = false
             binding.expression2TextView.isClickable = false
+            rotationHideX(binding.expression1TextView)
+            rotationHideX(binding.expression2TextView)
         }
 
         override fun onFinish() {
+
             binding.winGif.visibility = View.INVISIBLE
+            uncompressedButtons()
             binding.expression1TextView.isClickable = true
             binding.expression2TextView.isClickable = true
             mathGame.changeNumbers()
             expressionTextViewsChange()
+            rotationOpenX(binding.expression1TextView)
+            rotationOpenX(binding.expression2TextView)
             timer = timer()
             timer.start()
         }
@@ -61,6 +67,9 @@ class MathFragment : BaseCommonFragment() {
         binding.expression2TextView.setOnClickListener(this)
 
         expressionTextViewsChange()
+
+        rotationOpenX(binding.expression1TextView)
+        rotationOpenX(binding.expression2TextView)
     }
 
     override fun onClick(view: View?) {
@@ -103,7 +112,7 @@ class MathFragment : BaseCommonFragment() {
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
         timer.cancel()
-
+        timerWinGif.cancel()
         val loseFragment = LoseFragment()
 
         GlobalScope.launch {
@@ -142,6 +151,7 @@ class MathFragment : BaseCommonFragment() {
             }
         }
         timerWinGif.start()
+        uncompressedButtons()
     }
 
     private fun timer(): CountDownTimer {
@@ -156,4 +166,24 @@ class MathFragment : BaseCommonFragment() {
             }
         }
     }
+
+    private fun rotationOpenX(view: View) {
+        ObjectAnimator.ofFloat(view, View.ROTATION_X, 270f, 360f).apply {
+            duration = 500
+            start()
+        }
+    }
+
+    private fun rotationHideX(view: View) {
+        ObjectAnimator.ofFloat(view, View.ROTATION_X, 0f, 90f).apply {
+            duration = 500
+            start()
+        }
+    }
+
+    private fun uncompressedButtons() {
+        binding.expression1TextView.isPressed = false
+        binding.expression2TextView.isPressed = false
+    }
+
 }
