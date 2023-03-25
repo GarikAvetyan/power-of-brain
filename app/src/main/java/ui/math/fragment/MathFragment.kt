@@ -2,6 +2,7 @@ package ui.math.fragment
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -14,16 +15,19 @@ import com.fbf.powerofbrain.databinding.FragmentMathBinding
 import kotlinx.coroutines.*
 import ui.lose.fragment.LoseFragment
 import ui.math.model.MathGame
+import util.Constants
 
 class MathFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentMathBinding
     private lateinit var mathGame: MathGame
     private var millisinFuture = 6000L
+    private var isStart = false
     private var timer = timer()
 
-    private val timerWinGif = object : CountDownTimer(1000, 1000) {
+    private val timerWinAnimation = object : CountDownTimer(1000, 1000) {
         override fun onTick(remaining: Long) {
-            binding.winGif.visibility = View.VISIBLE
+            binding.winLottieAnimationView.visibility = View.VISIBLE
+            binding.winLottieAnimationView.playAnimation()
             binding.expression1TextView.isClickable = false
             binding.expression2TextView.isClickable = false
             rotationHideX(binding.expression1TextView)
@@ -31,8 +35,8 @@ class MathFragment : BaseCommonFragment() {
         }
 
         override fun onFinish() {
-
-            binding.winGif.visibility = View.INVISIBLE
+            binding.winLottieAnimationView.visibility = View.INVISIBLE
+            binding.winLottieAnimationView.cancelAnimation()
             uncompressedButtons()
             binding.expression1TextView.isClickable = true
             binding.expression2TextView.isClickable = true
@@ -52,15 +56,20 @@ class MathFragment : BaseCommonFragment() {
     ): View {
         binding = FragmentMathBinding.inflate(layoutInflater)
         val view = binding.root
+
+        soundClick =
+            MediaPlayer.create(requireContext(), R.raw.sound_click)
+
         millisinFuture = 6000L
         mathGame = MathGame()
 
-        backButtonBlock()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        rotationOpenX(binding.descriptionTextView)
 
         binding.backImageButton.setOnClickListener(this)
         binding.expression1TextView.setOnClickListener(this)
@@ -75,8 +84,10 @@ class MathFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
+                soundClick.start()
+                isStart = false
                 timer.cancel()
-                timerWinGif.cancel()
+                timerWinAnimation.cancel()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@MathFragment)
                         .commit()
@@ -112,7 +123,8 @@ class MathFragment : BaseCommonFragment() {
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
         timer.cancel()
-        timerWinGif.cancel()
+        isStart = false
+        timerWinAnimation.cancel()
         val loseFragment = LoseFragment()
 
         GlobalScope.launch {
@@ -130,12 +142,16 @@ class MathFragment : BaseCommonFragment() {
         loseFragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.mainFrameLayout, loseFragment)
-            .addToBackStack("Math")
+            .addToBackStack(Constants.MATH)
             .commit()
     }
 
     //When win work this method
     private fun win() {
+        if (!isStart) {
+            rotationHideX(binding.descriptionTextView)
+            isStart = true
+        }
         mathGame.score++
         binding.scoreTextView.text = mathGame.score.toString()
         timer.cancel()
@@ -150,14 +166,14 @@ class MathFragment : BaseCommonFragment() {
                 millisinFuture = 3000L
             }
         }
-        timerWinGif.start()
+        timerWinAnimation.start()
         uncompressedButtons()
     }
 
     private fun timer(): CountDownTimer {
         return object : CountDownTimer(millisinFuture, 1000) {
             override fun onTick(remaining: Long) {
-                binding.winGif.visibility = View.INVISIBLE
+                //binding.winLottieAnimationView.visibility = View.INVISIBLE
                 binding.timeTextView.text = (remaining / 1000).toString()
             }
 
@@ -185,5 +201,7 @@ class MathFragment : BaseCommonFragment() {
         binding.expression1TextView.isPressed = false
         binding.expression2TextView.isPressed = false
     }
+
+
 
 }

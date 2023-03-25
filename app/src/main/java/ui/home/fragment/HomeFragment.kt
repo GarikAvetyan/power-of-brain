@@ -1,6 +1,7 @@
 package ui.home.fragment
 
 import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -16,7 +17,6 @@ class HomeFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentHomeBinding
     private val playFragment = PlayFragment()
 
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +25,8 @@ class HomeFragment : BaseCommonFragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         val view = binding.root
 
-        backButtonBlock()
+        soundClick =
+        MediaPlayer.create(requireContext(), R.raw.sound_click)
 
         return view
     }
@@ -39,6 +40,7 @@ class HomeFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.playButton -> {
+                soundClick.start()
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.mainFrameLayout, playFragment)
                     .addToBackStack("")

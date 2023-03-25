@@ -1,6 +1,7 @@
 package ui.vision.fragment
 
 import android.animation.ObjectAnimator
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -18,24 +19,19 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ui.lose.fragment.LoseFragment
 import ui.vision.model.VisionGame
+import util.Constants
 
 class VisionFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentVisionBinding
     private lateinit var images: List<ImageView>
     private lateinit var visionGame: VisionGame
+    private var isStart = false
     private var millisinFuture = 4000L
     private var timer = timer()
-    private val timerWinGif = object : CountDownTimer(1000, 1000) {
+    private val timerWinAnimation = object : CountDownTimer(1000, 1000) {
         override fun onTick(remaining: Long) {
-            binding.winGif.visibility = View.VISIBLE
-        }
-
-        override fun onFinish() {
-            buttonsBlock()
-
-            for (i in images) {
-                rotationHideY(i)
-            }
+            binding.winLottieAnimationView.visibility = View.VISIBLE
+            binding.winLottieAnimationView.playAnimation()
             rotationHideX(binding.blueCircleImageView)
             rotationHideX(binding.greenCircleImageView)
             rotationHideX(binding.redCircleImageView)
@@ -45,9 +41,19 @@ class VisionFragment : BaseCommonFragment() {
             rotationHideX(binding.blueSquareImageView)
             rotationHideX(binding.greenSquareImageView)
             rotationHideX(binding.redSquareImageView)
+        }
+
+        override fun onFinish() {
+            buttonsBlock()
+
+            for (i in images) {
+                rotationHideY(i)
+            }
+
 
             Handler(Looper.getMainLooper()).postDelayed({
-                binding.winGif.visibility = View.INVISIBLE
+                binding.winLottieAnimationView.visibility = View.INVISIBLE
+                binding.winLottieAnimationView.cancelAnimation()
                 visionGame.updateImages()
                 filterImages()
                 binding.chooseConstraintLayout.visibility = View.INVISIBLE
@@ -65,7 +71,9 @@ class VisionFragment : BaseCommonFragment() {
         binding = FragmentVisionBinding.inflate(layoutInflater)
         val view = binding.root
         millisinFuture = 4000L
-        backButtonBlock()
+
+        soundClick =
+            MediaPlayer.create(requireContext(), R.raw.sound_click)
 
         images = listOf(
             binding.imageView1,
@@ -92,6 +100,8 @@ class VisionFragment : BaseCommonFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        rotationOpenX(binding.descriptionTextView)
 
         binding.backImageButton.setOnClickListener(this)
         binding.blueCircleImageView.setOnClickListener(this)
@@ -122,8 +132,10 @@ class VisionFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
+                soundClick.start()
+                isStart = false
                 timer.cancel()
-                timerWinGif.cancel()
+                timerWinAnimation.cancel()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@VisionFragment)
                         .commit()
@@ -190,32 +202,37 @@ class VisionFragment : BaseCommonFragment() {
     //When win work this method
     private fun win() {
         if (visionGame.queue == visionGame.selectedImages.size) {
+            if (!isStart) {
+                rotationHideX500(binding.descriptionTextView)
+                isStart = true
+            }
             uncompressedButtons()
             buttonsBlock()
             visionGame.score++
             when (visionGame.score) {
                 3 -> {
-                    millisinFuture += 1000L
+                    millisinFuture += 2000L
                 }
                 6 -> {
                     millisinFuture += 1000L
                 }
-                9 -> {
-                    millisinFuture += 1000L
+                10 -> {
+                    millisinFuture += 2000L
                 }
             }
             binding.scoreTextView.text = visionGame.score.toString()
 
             timer.cancel()
-            timerWinGif.start()
+            timerWinAnimation.start()
         }
     }
 
     //When lose work this method
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
+        isStart = false
         timer.cancel()
-        timerWinGif.cancel()
+        timerWinAnimation.cancel()
         val loseFragment = LoseFragment()
 
         GlobalScope.launch {
@@ -233,7 +250,7 @@ class VisionFragment : BaseCommonFragment() {
         loseFragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.mainFrameLayout, loseFragment)
-            .addToBackStack("Vision")
+            .addToBackStack(Constants.VISION)
             .commit()
     }
 
@@ -329,7 +346,14 @@ class VisionFragment : BaseCommonFragment() {
     }
 
     private fun rotationHideX(view: View) {
-        ObjectAnimator.ofFloat(view, View.ROTATION_X, 0f,90f).apply {
+        ObjectAnimator.ofFloat(view, View.ROTATION_X, 0f, 90f).apply {
+            duration = 300
+            start()
+        }
+    }
+
+    private fun rotationHideX500(view: View) {
+        ObjectAnimator.ofFloat(view, View.ROTATION_X, 0f, 90f).apply {
             duration = 500
             start()
         }

@@ -1,6 +1,7 @@
 package ui.action.fragment
 
 import android.animation.ObjectAnimator
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ui.action.model.ActionGame
 import ui.lose.fragment.LoseFragment
+import util.Constants
 
 class ActionFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentActionBinding
@@ -23,6 +25,7 @@ class ActionFragment : BaseCommonFragment() {
     private lateinit var tiles: List<ImageView>
     private var millisinFuture = 11000L
     private var timer = timer()
+    private var currentTime = 0L
 
 
     override fun onCreateView(
@@ -31,6 +34,9 @@ class ActionFragment : BaseCommonFragment() {
     ): View {
         binding = FragmentActionBinding.inflate(layoutInflater)
         val view = binding.root
+
+        soundClick =
+            MediaPlayer.create(requireContext(), R.raw.sound_click)
 
         tiles = listOf(
             binding.tile1ImageView,
@@ -51,7 +57,6 @@ class ActionFragment : BaseCommonFragment() {
             binding.tile16ImageView,
         )
 
-        backButtonBlock()
         actionGame = ActionGame()
 
         for (i in tiles.indices) {
@@ -62,16 +67,14 @@ class ActionFragment : BaseCommonFragment() {
             }
         }
 
-        binding.progressBar.apply {
-            progress = actionGame.currentScore
-            max = actionGame.maxScore
-        }
-
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        descriptionOpenX()
+
         binding.backImageButton.setOnClickListener(this)
         binding.tile1ImageView.setOnClickListener(this)
         binding.tile2ImageView.setOnClickListener(this)
@@ -91,7 +94,12 @@ class ActionFragment : BaseCommonFragment() {
         binding.tile16ImageView.setOnClickListener(this)
         binding.tableConstraintLayout.setOnClickListener(this)
 
-        for(i in tiles){
+        binding.progressBar.apply {
+            progress = actionGame.currentScore
+            max = actionGame.maxScore
+        }
+
+        for (i in tiles) {
             rotationOpenY(i)
         }
     }
@@ -99,6 +107,7 @@ class ActionFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
+                soundClick.start()
                 timer.cancel()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@ActionFragment)
@@ -231,6 +240,7 @@ class ActionFragment : BaseCommonFragment() {
         binding.progressBar.progress = actionGame.currentScore
 
         if (actionGame.score == 1) {
+            descriptionHideX()
             timer.start()
         }
 
@@ -276,7 +286,7 @@ class ActionFragment : BaseCommonFragment() {
         loseFragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.mainFrameLayout, loseFragment)
-            .addToBackStack("Action")
+            .addToBackStack(Constants.ACTION)
             .commit()
 
         binding.progressBar.progress = 0
@@ -285,6 +295,7 @@ class ActionFragment : BaseCommonFragment() {
     private fun timer(): CountDownTimer {
         return object : CountDownTimer(millisinFuture, 1000) {
             override fun onTick(remaining: Long) {
+                currentTime = remaining
                 binding.timeTextView.text = (remaining / 1000).toString()
             }
 
@@ -307,5 +318,17 @@ class ActionFragment : BaseCommonFragment() {
     }
 
 
+    private fun descriptionOpenX() {
+        ObjectAnimator.ofFloat(binding.descriptionTextView, View.ROTATION_X, 270f, 360f).apply {
+            duration = 500
+            start()
+        }
+    }
 
+    private fun descriptionHideX() {
+        ObjectAnimator.ofFloat(binding.descriptionTextView, View.ROTATION_X, 0f, 90f).apply {
+            duration = 500
+            start()
+        }
+    }
 }

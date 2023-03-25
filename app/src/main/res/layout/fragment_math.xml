@@ -32,7 +32,7 @@
             android:layout_marginHorizontal="@dimen/_16dp"
             android:gravity="center"
             android:text="@string/zero"
-            android:textColor="@color/gray_dark"
+            android:textColor="@color/black"
             android:textSize="@dimen/_20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/heartImageView"
@@ -131,17 +131,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/heartsConstraintLayout" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/winGif"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/wingif"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerImageView" />
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/timerImageView"
         android:layout_width="@dimen/_85dp"
@@ -151,4 +140,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/winLottieAnimationView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerImageView"
+        app:lottie_rawRes="@raw/win_animation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

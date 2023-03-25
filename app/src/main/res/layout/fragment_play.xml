@@ -12,7 +12,7 @@
         android:layout_marginVertical="@dimen/_2dp"
         android:layout_marginStart="@dimen/_2dp"
         android:layout_marginEnd="@dimen/_16dp"
-        app:layout_constraintBottom_toTopOf="@+id/timeConstraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/speedConstraintLayout"
         app:layout_constraintEnd_toStartOf="@+id/actionConstraintLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backImageButton">
@@ -155,9 +155,9 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/_2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/timeConstraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/timeConstraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/timeConstraintLayout">
+        app:layout_constraintEnd_toEndOf="@+id/speedConstraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/speedConstraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/speedConstraintLayout">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/patienceImageView"
@@ -185,7 +185,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/timeConstraintLayout"
+        android:id="@+id/speedConstraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/_2dp"
@@ -195,27 +195,27 @@
         app:layout_constraintTop_toBottomOf="@id/mathConstraintLayout">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/timeImageView"
+            android:id="@+id/speedImageView"
             style="@style/MainView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/time"
-            app:layout_constraintBottom_toTopOf="@id/timeTextView"
+            android:src="@drawable/speed"
+            app:layout_constraintBottom_toTopOf="@id/speedTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/timeTextView"
+            android:id="@+id/speedTextView"
             style="@style/BlackTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4dp"
-            android:text="@string/time"
+            android:text="@string/speed"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/timeImageView"
-            app:layout_constraintStart_toStartOf="@+id/timeImageView"
-            app:layout_constraintTop_toBottomOf="@+id/timeImageView" />
+            app:layout_constraintEnd_toEndOf="@+id/speedImageView"
+            app:layout_constraintStart_toStartOf="@+id/speedImageView"
+            app:layout_constraintTop_toBottomOf="@+id/speedImageView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -246,7 +246,7 @@
             android:layout_marginHorizontal="@dimen/_16dp"
             android:gravity="center"
             android:text="@string/zero"
-            android:textColor="@color/gray_dark"
+            android:textColor="@color/black"
             android:textSize="@dimen/_20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/heartImageView"

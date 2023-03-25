@@ -32,7 +32,7 @@
             android:layout_marginHorizontal="@dimen/_16dp"
             android:gravity="center"
             android:text="@string/zero"
-            android:textColor="@color/gray_dark"
+            android:textColor="@color/black"
             android:textSize="@dimen/_20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/heartImageView"
@@ -72,8 +72,8 @@
         android:text="@string/_0"
         android:textAllCaps="true"
         android:textSize="@dimen/_32sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/heartsConstraintLayout" />
 
@@ -144,8 +144,8 @@
             android:layout_width="@dimen/_64dp"
             android:layout_height="@dimen/_64dp"
             android:layout_marginStart="@dimen/_2dp"
-            android:textSize="@dimen/_32sp"
             android:layout_marginEnd="@dimen/_4dp"
+            android:textSize="@dimen/_32sp"
             app:layout_constraintBottom_toBottomOf="@+id/point1TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/point3TextView"
@@ -348,8 +348,8 @@
             style="@style/MainView"
             android:layout_width="@dimen/_64dp"
             android:layout_height="@dimen/_64dp"
-            android:layout_marginBottom="@dimen/_4dp"
             android:layout_marginTop="@dimen/_2dp"
+            android:layout_marginBottom="@dimen/_4dp"
             android:textSize="@dimen/_32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/point1TextView"
@@ -394,15 +394,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/winGif"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/winLottieAnimationView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="invisible"
-        android:src="@drawable/wingif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+        app:lottie_rawRes="@raw/win_animation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package ui.lose.fragment
 
+import android.media.MediaPlayer
 import application.MyApplication
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,8 +26,10 @@ class LoseFragment : BaseCommonFragment() {
         binding = FragmentLoseBinding.inflate(layoutInflater)
         val view = binding.root
 
+        soundClick =
+        MediaPlayer.create(requireContext(), R.raw.sound_click)
+
         binding.scoreNumberTextView.text = arguments?.get("score").toString()
-        backButtonBlock()
 
         return view
     }
@@ -61,6 +64,16 @@ class LoseFragment : BaseCommonFragment() {
                         MyApplication.database.bestScoresDao()
                             .getBestScores()[0].visionBestScores.toString()
                 }
+                Constants.PATIENCE -> {
+                    binding.bestScoreNumberTextView.text =
+                        MyApplication.database.bestScoresDao()
+                            .getBestScores()[0].patienceBestScores.toString()
+                }
+                Constants.SPEED -> {
+                    binding.bestScoreNumberTextView.text =
+                        MyApplication.database.bestScoresDao()
+                            .getBestScores()[0].speedBestScores.toString()
+                }
             }
         }
 
@@ -71,9 +84,11 @@ class LoseFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.restartImageView -> {
+                soundClick.start()
                 requireActivity().supportFragmentManager.popBackStack()
             }
             binding.homeImageView -> {
+                soundClick.start()
                 requireActivity().supportFragmentManager.fragments.clear()
                 val homeFragment = HomeFragment()
                 requireActivity().supportFragmentManager.beginTransaction()

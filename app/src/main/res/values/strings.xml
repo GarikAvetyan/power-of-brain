@@ -28,4 +28,9 @@
     <string name="sort_right">Sort Right!</string>
     <string name="descriptionVision">Remeber and Rebuild Lineups!</string>
     <string name="_3">3</string>
+    <string name="_0_0">0.0</string>
+    <string name="descriptionPatience">Catch the circle!</string>
+    <string name="speed">Speed</string>
+    <string name="descriptionSpeed">Click on the gray tile continuously!</string>
+    <string name="by_fbf">FROM FBF</string>
 </resources>

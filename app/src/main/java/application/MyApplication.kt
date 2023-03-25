@@ -23,7 +23,7 @@ class MyApplication : Application() {
 
         GlobalScope.launch {
             if (database.bestScoresDao().getBestScores().isEmpty()) {
-                database.bestScoresDao().insert(BestScores(0, 0, 0, 0, 0, 0, 0))
+                database.bestScoresDao().insert(BestScores(0, 0, 0, 0, 0, 0.0, 0))
             }
         }
     }

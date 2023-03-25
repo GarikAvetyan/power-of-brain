@@ -1,5 +1,7 @@
 package ui.memory.fragment
 
+import android.animation.ObjectAnimator
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -15,6 +17,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ui.lose.fragment.LoseFragment
 import ui.memory.model.MemoryGame
+import util.Constants
 
 class MemoryFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentMemoryBinding
@@ -22,16 +25,22 @@ class MemoryFragment : BaseCommonFragment() {
     private lateinit var memoryGame: MemoryGame
     private var currentTextSize = 32f
     private var sequence = 0
+    private var isStart = false
+    private var millishInFuture: Long = 3200
+    private var countDownInterval: Long = 100
+    private var minusSize: Float = 1f
     private var timer = timer()
     private val basePoint = ArrayList<Int>()
-    private val timerWinGif = object : CountDownTimer(1000, 1000) {
+    private val timerWinAnimation = object : CountDownTimer(1000, 1000) {
         override fun onTick(remaining: Long) {
-            binding.winGif.visibility = View.VISIBLE
+            binding.winLottieAnimationView.visibility = View.VISIBLE
+            binding.winLottieAnimationView.playAnimation()
             pointsEnabled(false)
         }
 
         override fun onFinish() {
-            binding.winGif.visibility = View.INVISIBLE
+            binding.winLottieAnimationView.visibility = View.INVISIBLE
+            binding.winLottieAnimationView.cancelAnimation()
             binding.scoreTextView.text = memoryGame.score.toString()
             clearPoints()
             sequence = 0
@@ -40,6 +49,7 @@ class MemoryFragment : BaseCommonFragment() {
             setNumbers()
             filterPoitns()
             timer.cancel()
+            timer = timer()
             pointsEnabled(false)
             timer.start()
         }
@@ -53,8 +63,11 @@ class MemoryFragment : BaseCommonFragment() {
         binding = FragmentMemoryBinding.inflate(layoutInflater)
         val view = binding.root
 
+        soundClick =
+            MediaPlayer.create(requireContext(), R.raw.sound_click)
+
         memoryGame = MemoryGame()
-        binding.winGif.visibility = View.INVISIBLE
+        binding.winLottieAnimationView.visibility = View.INVISIBLE
 
         points = listOf(
             binding.point1TextView,
@@ -88,12 +101,13 @@ class MemoryFragment : BaseCommonFragment() {
 
         currentTextSize = 32f
 
-        backButtonBlock()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        descriptionOpenX()
 
         binding.backImageButton.setOnClickListener(this)
         binding.point1TextView.setOnClickListener(this)
@@ -125,8 +139,14 @@ class MemoryFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
+                millishInFuture = 3200
+                countDownInterval = 100
+                minusSize = 1f
+
+                soundClick.start()
+                isStart = false
                 timer.cancel()
-                timerWinGif.cancel()
+                timerWinAnimation.cancel()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@MemoryFragment)
                         .commit()
@@ -211,17 +231,49 @@ class MemoryFragment : BaseCommonFragment() {
     //When win work this method
     private fun win() {
         if (sequence == memoryGame.availablePointsIndexies.size) {
+            if (!isStart) {
+                descriptionHideX()
+                isStart = true
+            }
+
             memoryGame.score++
             binding.scoreTextView.text = memoryGame.score.toString()
-            timerWinGif.start()
+            timerWinAnimation.start()
+
+            when (memoryGame.score) {
+                6 -> {
+                    millishInFuture = 5000
+                    countDownInterval = 100
+                    minusSize = 0.64f
+                }
+                8->{
+                    millishInFuture = 6400
+                    countDownInterval = 100
+                    minusSize = 0.5f
+                }
+                12->{
+                    millishInFuture = 12800
+                    countDownInterval = 100
+                    minusSize = 0.25f
+                }
+                18->{
+                    millishInFuture = 16000
+                    countDownInterval = 100
+                    minusSize = 0.2f
+                }
+            }
         }
     }
 
     //When lose work this method
     @OptIn(DelicateCoroutinesApi::class)
     private fun lose() {
+        isStart = false
         timer.cancel()
-        timerWinGif.cancel()
+        timerWinAnimation.cancel()
+        millishInFuture = 3200
+        countDownInterval = 100
+        minusSize = 1f
         clearPoints()
         sequence = 0
         val loseFragment = LoseFragment()
@@ -241,7 +293,7 @@ class MemoryFragment : BaseCommonFragment() {
         loseFragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.mainFrameLayout, loseFragment)
-            .addToBackStack("Memory")
+            .addToBackStack(Constants.MEMORY)
             .commit()
     }
 
@@ -287,9 +339,9 @@ class MemoryFragment : BaseCommonFragment() {
     }
 
     private fun timer(): CountDownTimer {
-        return object : CountDownTimer(3200, 100) {
+        return object : CountDownTimer(millishInFuture, countDownInterval) {
             override fun onTick(remaining: Long) {
-                currentTextSize -= 1f
+                currentTextSize -= minusSize
                 for (i in basePoint) {
                     points[i].textSize = currentTextSize
                 }
@@ -315,6 +367,20 @@ class MemoryFragment : BaseCommonFragment() {
             for (i in points) {
                 i.isEnabled = false
             }
+        }
+    }
+
+    private fun descriptionOpenX() {
+        ObjectAnimator.ofFloat(binding.descriptionTextView, View.ROTATION_X, 270f, 360f).apply {
+            duration = 500
+            start()
+        }
+    }
+
+    private fun descriptionHideX() {
+        ObjectAnimator.ofFloat(binding.descriptionTextView, View.ROTATION_X, 0f, 90f).apply {
+            duration = 500
+            start()
         }
     }
 }

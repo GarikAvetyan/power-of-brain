@@ -1,5 +1,6 @@
 package ui.play.fragment
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import ui.action.fragment.ActionFragment
 import ui.math.fragment.MathFragment
 import ui.memory.fragment.MemoryFragment
 import ui.patience.fragment.PatienceFragment
+import ui.speed.fragment.SpeedFragment
 import ui.vision.fragment.VisionFragment
 
 class PlayFragment : BaseCommonFragment() {
@@ -23,7 +25,8 @@ class PlayFragment : BaseCommonFragment() {
         binding = FragmentPlayBinding.inflate(layoutInflater)
         val view = binding.root
 
-        backButtonBlock()
+        soundClick =
+            MediaPlayer.create(requireContext(), R.raw.sound_click)
 
         return view
     }
@@ -37,11 +40,13 @@ class PlayFragment : BaseCommonFragment() {
         binding.memoryConstraintLayout.setOnClickListener(this)
         binding.visionConstraintLayout.setOnClickListener(this)
         binding.patienceConstraintLayout.setOnClickListener(this)
+        binding.speedConstraintLayout.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
+                soundClick.start()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@PlayFragment)
                         .commit()
@@ -49,24 +54,34 @@ class PlayFragment : BaseCommonFragment() {
                 }
             }
             binding.mathConstraintLayout -> {
+                soundClick.start()
                 val mathFragment = MathFragment()
                 replaceFragment(mathFragment)
             }
             binding.actionConstraintLayout -> {
+                soundClick.start()
                 val actionFragment = ActionFragment()
                 replaceFragment(actionFragment)
             }
             binding.memoryConstraintLayout -> {
+                soundClick.start()
                 val memoryFragment = MemoryFragment()
                 replaceFragment(memoryFragment)
             }
             binding.visionConstraintLayout -> {
+                soundClick.start()
                 val visionFragment = VisionFragment()
                 replaceFragment(visionFragment)
             }
             binding.patienceConstraintLayout -> {
+                soundClick.start()
                 val patienceFragment = PatienceFragment()
                 replaceFragment(patienceFragment)
+            }
+            binding.speedConstraintLayout -> {
+                soundClick.start()
+                val speedFragment = SpeedFragment()
+                replaceFragment(speedFragment)
             }
         }
     }

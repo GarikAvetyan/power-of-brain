@@ -25,7 +25,7 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(layoutInflater)
         val view = binding.root
 
-        backButtonBlock()
+        binding.splashLottieAnimationView.playAnimation()
 
         Handler(Looper.getMainLooper()).postDelayed({
             requireActivity().supportFragmentManager.beginTransaction()

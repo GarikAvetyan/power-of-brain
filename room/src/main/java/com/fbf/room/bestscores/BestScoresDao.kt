@@ -1,9 +1,7 @@
 package com.fbf.room.bestscores
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.fbf.room.bestscores.model.BestScores
