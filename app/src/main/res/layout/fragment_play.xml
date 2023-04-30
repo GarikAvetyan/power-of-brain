@@ -5,225 +5,375 @@
     android:layout_height="match_parent"
     tools:context="ui.play.fragment.PlayFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mathConstraintLayout"
-        android:layout_width="0dp"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewPlay"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/_32dp"
-        android:layout_marginTop="@dimen/_70dp"
-        android:layout_marginBottom="@dimen/_16dp"
-        app:layout_constraintBottom_toTopOf="@+id/speedConstraintLayout"
-        app:layout_constraintEnd_toStartOf="@+id/actionConstraintLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backImageButton">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/mathImageView"
-            style="@style/MainView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/math"
-            app:layout_constraintBottom_toTopOf="@id/mathTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/mathTextView"
-            style="@style/BlackTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4dp"
-            android:text="@string/math"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/mathImageView"
-            app:layout_constraintStart_toStartOf="@id/mathImageView"
-            app:layout_constraintTop_toBottomOf="@+id/mathImageView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/actionConstraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/_32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mathConstraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/mathConstraintLayout"
-        app:layout_constraintTop_toTopOf="@+id/mathConstraintLayout">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/actionImageView"
-            style="@style/MainView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/action"
-            app:layout_constraintBottom_toTopOf="@id/actionTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/actionTextView"
-            style="@style/BlackTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4dp"
-            android:text="@string/action"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/actionImageView"
-            app:layout_constraintStart_toStartOf="@id/actionImageView"
-            app:layout_constraintTop_toBottomOf="@+id/actionImageView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/visionConstraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/speedConstraintLayout"
-        app:layout_constraintEnd_toEndOf="@+id/actionConstraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/actionConstraintLayout"
-        app:layout_constraintTop_toTopOf="@+id/speedConstraintLayout">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/visionImageView"
-            style="@style/MainView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/vision"
-            app:layout_constraintBottom_toTopOf="@id/visionTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/visionTextView"
-            style="@style/BlackTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4dp"
-            android:text="@string/vision"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/visionImageView"
-            app:layout_constraintStart_toStartOf="@+id/visionImageView"
-            app:layout_constraintTop_toBottomOf="@+id/visionImageView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/memoryConstraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/patienceConstraintLayout"
-        app:layout_constraintEnd_toEndOf="@+id/visionConstraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/visionConstraintLayout"
-        app:layout_constraintTop_toTopOf="@+id/patienceConstraintLayout">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/memoryImageView"
-            style="@style/MainView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/memory"
-            app:layout_constraintBottom_toTopOf="@id/memoryTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/memoryTextView"
-            style="@style/BlackTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4dp"
-            android:text="@string/memory"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/memoryImageView"
-            app:layout_constraintStart_toStartOf="@+id/memoryImageView"
-            app:layout_constraintTop_toBottomOf="@+id/memoryImageView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/patienceConstraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_16dp"
-        android:layout_marginBottom="@dimen/_70dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/speedConstraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/speedConstraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/speedConstraintLayout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineView">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/patienceImageView"
-            style="@style/MainView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/patience"
-            app:layout_constraintBottom_toTopOf="@id/patienceTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/patienceTextView"
-            style="@style/BlackTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4dp"
-            android:text="@string/patience"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/patienceImageView"
-            app:layout_constraintStart_toStartOf="@+id/patienceImageView"
-            app:layout_constraintTop_toBottomOf="@+id/patienceImageView" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mathConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_160dp"
+                android:layout_marginHorizontal="@dimen/_32dp"
+                android:layout_marginTop="@dimen/_32dp"
+                android:layout_marginBottom="@dimen/_16dp"
+                android:background="@drawable/red_button"
+                app:layout_constraintBottom_toTopOf="@+id/speedConstraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/mathAnimation"
+                    android:layout_width="@dimen/_115dp"
+                    android:layout_height="@dimen/_115dp"
+                    android:layout_margin="@dimen/_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/math_animation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playMathTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_28dp"
+                    android:text="@string/play_text"
+                    android:textSize="@dimen/_25sp"
+                    app:layout_constraintStart_toEndOf="@id/mathAnimation"
+                    app:layout_constraintTop_toTopOf="@+id/mathAnimation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mathTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/math"
+                    app:layout_constraintStart_toStartOf="@+id/playMathTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/playMathTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/actionConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_160dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:background="@drawable/yellow_button"
+                app:layout_constraintBottom_toTopOf="@+id/visionConstraintLayout"
+                app:layout_constraintEnd_toEndOf="@id/mathConstraintLayout"
+                app:layout_constraintStart_toStartOf="@id/mathConstraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/patienceConstraintLayout">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/actionAnimation"
+                    android:layout_width="@dimen/_115dp"
+                    android:layout_height="@dimen/_115dp"
+                    android:layout_margin="@dimen/_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/action_animation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playActionTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_28dp"
+                    android:text="@string/play_text"
+                    android:textSize="@dimen/_25sp"
+                    app:layout_constraintStart_toEndOf="@id/actionAnimation"
+                    app:layout_constraintTop_toTopOf="@+id/actionAnimation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actionTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action"
+                    app:layout_constraintStart_toStartOf="@+id/playActionTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/playActionTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/visionConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_160dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:background="@drawable/gray1_button"
+                app:layout_constraintBottom_toTopOf="@+id/memoryConstraintLayout"
+                app:layout_constraintEnd_toEndOf="@+id/mathConstraintLayout"
+                app:layout_constraintStart_toStartOf="@+id/mathConstraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/actionConstraintLayout">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/visionAnimation"
+                    android:layout_width="@dimen/_115dp"
+                    android:layout_height="@dimen/_115dp"
+                    android:layout_margin="@dimen/_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/vision_animation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playVisionTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_28dp"
+                    android:text="@string/play_text"
+                    android:textSize="@dimen/_25sp"
+                    app:layout_constraintStart_toEndOf="@id/visionAnimation"
+                    app:layout_constraintTop_toTopOf="@+id/visionAnimation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/visionTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vision"
+                    app:layout_constraintStart_toStartOf="@+id/playVisionTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/playVisionTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/memoryConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_160dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:layout_marginBottom="@dimen/_32dp"
+                android:background="@drawable/purple_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/mathConstraintLayout"
+                app:layout_constraintStart_toStartOf="@id/mathConstraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/visionConstraintLayout">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/memoryAnimation"
+                    android:layout_width="@dimen/_115dp"
+                    android:layout_height="@dimen/_115dp"
+                    android:layout_margin="@dimen/_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/memory_animation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playMemoryTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_28dp"
+                    android:text="@string/play_text"
+                    android:textSize="@dimen/_25sp"
+                    app:layout_constraintStart_toEndOf="@id/memoryAnimation"
+                    app:layout_constraintTop_toTopOf="@+id/memoryAnimation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/memoryTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/memory"
+                    app:layout_constraintStart_toStartOf="@+id/playMemoryTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/playMemoryTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/patienceConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_160dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:background="@drawable/blue_button"
+                app:layout_constraintBottom_toTopOf="@id/actionConstraintLayout"
+                app:layout_constraintEnd_toEndOf="@+id/speedConstraintLayout"
+                app:layout_constraintStart_toStartOf="@+id/speedConstraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/speedConstraintLayout">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/patienceAnimation"
+                    android:layout_width="@dimen/_115dp"
+                    android:layout_height="@dimen/_115dp"
+                    android:layout_margin="@dimen/_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/patience_animation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playPatienceTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_28dp"
+                    android:text="@string/play_text"
+                    android:textSize="@dimen/_25sp"
+                    app:layout_constraintStart_toEndOf="@id/patienceAnimation"
+                    app:layout_constraintTop_toTopOf="@+id/patienceAnimation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/patienceTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/patience"
+                    app:layout_constraintStart_toStartOf="@+id/playPatienceTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/playPatienceTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/speedConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_160dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:background="@drawable/green_button"
+                app:layout_constraintBottom_toTopOf="@id/patienceConstraintLayout"
+                app:layout_constraintEnd_toEndOf="@+id/mathConstraintLayout"
+                app:layout_constraintStart_toStartOf="@+id/mathConstraintLayout"
+                app:layout_constraintTop_toBottomOf="@id/mathConstraintLayout">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/speedAnimation"
+                    android:layout_width="@dimen/_115dp"
+                    android:layout_height="@dimen/_115dp"
+                    android:layout_margin="@dimen/_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/speed_animation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playSpeedTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_28dp"
+                    android:text="@string/play_text"
+                    android:textSize="@dimen/_25sp"
+                    app:layout_constraintStart_toEndOf="@id/speedAnimation"
+                    app:layout_constraintTop_toTopOf="@+id/speedAnimation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speedTextView"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/speed"
+                    app:layout_constraintStart_toStartOf="@+id/playSpeedTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/playSpeedTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/speedConstraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginVertical="@dimen/_16dp"
-        app:layout_constraintBottom_toTopOf="@id/patienceConstraintLayout"
-        app:layout_constraintEnd_toEndOf="@+id/mathConstraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/mathConstraintLayout"
-        app:layout_constraintTop_toBottomOf="@id/mathConstraintLayout">
+        android:id="@+id/gameBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_64dp"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/speedImageView"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/backImageButton"
             style="@style/MainView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/speed"
-            app:layout_constraintBottom_toTopOf="@id/speedTextView"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16dp"
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/speedTextView"
-            style="@style/BlackTextView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4dp"
-            android:text="@string/speed"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/speedImageView"
-            app:layout_constraintStart_toStartOf="@+id/speedImageView"
-            app:layout_constraintTop_toBottomOf="@+id/speedImageView" />
+            android:layout_marginEnd="@dimen/_16dp"
+            android:background="@drawable/shape_button"
+            app:layout_constraintBottom_toBottomOf="@+id/backImageButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backImageButton">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/addHeartImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_4dp"
+                android:src="@drawable/add_heart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/heartCountTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/heartCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4dp"
+                android:gravity="center"
+                android:maxLength="8"
+                android:text="@string/_0"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/addHeartImageView"
+                app:layout_constraintEnd_toStartOf="@id/heartImageView"
+                app:layout_constraintStart_toEndOf="@id/addHeartImageView"
+                app:layout_constraintTop_toTopOf="@+id/addHeartImageView" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/heartImageView"
+                android:layout_width="@dimen/_30dp"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginHorizontal="@dimen/_4dp"
+                android:src="@drawable/heart"
+                app:layout_constraintBottom_toBottomOf="@+id/addHeartImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/heartCountTextView"
+                app:layout_constraintTop_toTopOf="@+id/addHeartImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/backImageButton"
-        style="@style/MainView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_16dp"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2dp"
+        android:background="@color/blue_dark"
+        app:layout_constraintTop_toBottomOf="@+id/gameBar"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/scrollHandLottieAnimationView"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_margin="@dimen/_4dp"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/scroll_hand_animation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

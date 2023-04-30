@@ -9,11 +9,26 @@
         <item name="android:background">@drawable/custom_button</item>
     </style>
 
-    <style name="BlackTextView">
+    <style name="MemoryView">
         <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_50sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/memory_button</item>
+    </style>
+
+    <style name="MathView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_50sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/math_button</item>
+    </style>
+
+    <style name="WhiteTextView">
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/_20sp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
 

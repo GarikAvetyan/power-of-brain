@@ -3,71 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     tools:context="ui.home.fragment.HomeFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32dp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/homeLottieAnimationView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/_8dp"
         app:layout_constraintBottom_toTopOf="@id/playButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appNameTextView"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/home_animation" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/playButton"
-        style="@style/MainView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_64dp"
+        android:layout_height="@dimen/_60dp"
+        android:layout_marginHorizontal="@dimen/_32dp"
+        android:layout_marginVertical="@dimen/_8dp"
+        android:background="@drawable/play_button_background"
         android:text="@string/play"
         app:layout_constraintBottom_toTopOf="@id/settingsImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeLottieAnimationView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/settingsImageView"
-        style="@style/MainView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_32dp"
-        android:layout_marginEnd="@dimen/_16dp"
-        android:layout_marginBottom="@dimen/_140dp"
-        android:src="@drawable/settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ewardImageView"
-        app:layout_constraintStart_toStartOf="@+id/playButton"
-        app:layout_constraintTop_toBottomOf="@+id/playButton" />
+        android:layout_height="@dimen/_60dp"
+        android:layout_marginVertical="@dimen/_8dp"
+        android:background="@drawable/settings_button_background"
+        android:text="@string/play"
+        app:layout_constraintBottom_toTopOf="@id/awardsImageView"
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="@+id/playButton" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ewardImageView"
-        style="@style/MainView"
+        android:id="@+id/awardsImageView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_16dp"
-        android:src="@drawable/award"
-        app:layout_constraintBottom_toBottomOf="@+id/settingsImageView"
-        app:layout_constraintEnd_toStartOf="@+id/adsButton"
-        app:layout_constraintStart_toEndOf="@+id/settingsImageView"
-        app:layout_constraintTop_toTopOf="@+id/settingsImageView" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/adsButton"
-        style="@style/MainView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/_16dp"
-        android:gravity="center"
-        android:text="@string/ads"
-        android:textAllCaps="true"
-        android:textSize="@dimen/_20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ewardImageView"
+        android:layout_height="@dimen/_60dp"
+        android:layout_marginVertical="@dimen/_8dp"
+        android:background="@drawable/awards_button_background"
+        android:text="@string/play"
+        app:layout_constraintBottom_toTopOf="@id/adsImageView"
         app:layout_constraintEnd_toEndOf="@+id/playButton"
-        app:layout_constraintStart_toEndOf="@+id/ewardImageView"
-        app:layout_constraintTop_toTopOf="@+id/ewardImageView" />
+        app:layout_constraintStart_toStartOf="@+id/playButton" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/adsImageView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_60dp"
+        android:layout_marginBottom="@dimen/_32dp"
+        android:background="@drawable/ads_button_background"
+        android:text="@string/play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="@+id/playButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

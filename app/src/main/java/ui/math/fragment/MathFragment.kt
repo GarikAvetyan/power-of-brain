@@ -165,6 +165,9 @@ class MathFragment : BaseCommonFragment() {
             20 -> {
                 millisinFuture = 3000L
             }
+            30 -> {
+                millisinFuture = 2000L
+            }
         }
         timerWinAnimation.start()
         uncompressedButtons()

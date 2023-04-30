@@ -6,37 +6,30 @@
     android:layout_height="match_parent"
     tools:context="ui.patience.fragment.PatienceFragment">
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/backImageButton"
-        style="@style/MainView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back"
-        android:layout_margin="@dimen/_16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/timerTextView"
-        style="@style/BlackTextView"
+        style="@style/WhiteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_64dp"
         android:gravity="center"
         android:maxLines="1"
         android:text="@string/_0_0"
+        android:textColor="@color/black"
         android:textSize="@dimen/_32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backImageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/linePatienceView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/descriptionTextView"
-        style="@style/BlackTextView"
+        style="@style/WhiteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16dp"
         android:text="@string/descriptionPatience"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
         android:textSize="@dimen/_16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,5 +44,85 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gameBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_64dp"
+        android:background="@color/blue_light1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/backImageButton"
+            style="@style/MainView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16dp"
+            android:src="@drawable/back"
+            android:tint="@color/blue_light1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:background="@drawable/shape_button"
+            app:layout_constraintBottom_toBottomOf="@+id/backImageButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backImageButton">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/addHeartImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_4dp"
+                android:src="@drawable/add_heart"
+                android:tint="@color/blue_light1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/heartCountTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/heartCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4dp"
+                android:gravity="center"
+                android:maxLength="8"
+                android:text="@string/_0"
+                android:textColor="@color/blue_light1"
+                android:textSize="@dimen/_25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/addHeartImageView"
+                app:layout_constraintEnd_toStartOf="@id/heartImageView"
+                app:layout_constraintStart_toEndOf="@id/addHeartImageView"
+                app:layout_constraintTop_toTopOf="@+id/addHeartImageView" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/heartImageView"
+                android:layout_width="@dimen/_30dp"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginHorizontal="@dimen/_4dp"
+                android:src="@drawable/heart"
+                app:layout_constraintBottom_toBottomOf="@+id/addHeartImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/heartCountTextView"
+                app:layout_constraintTop_toTopOf="@+id/addHeartImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/linePatienceView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2dp"
+        android:background="@color/blue_dark1"
+        app:layout_constraintTop_toBottomOf="@+id/gameBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

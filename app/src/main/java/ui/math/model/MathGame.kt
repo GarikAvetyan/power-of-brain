@@ -7,24 +7,24 @@ class MathGame {
     var operator1 = operators[(0..1).random()]
     var operator2 = operators[(0..1).random()]
     var number1 = if (operator1 == '+') {
-        (7..60).random()
+        (10..60).random()
     } else {
-        (2..11).random()
+        (4..11).random()
     }
     var number2 = if (operator1 == '+') {
-        (7..60).random()
+        (10..60).random()
     } else {
-        (2..11).random()
+        (4..11).random()
     }
     var number3 = if (operator2 == '+') {
-        (7..60).random()
+        (10..60).random()
     } else {
-        (2..11).random()
+        (4..11).random()
     }
     var number4 = if (operator2 == '+') {
-        (7..60).random()
+      (10..60).random()
     } else {
-        (2..11).random()
+        (4..11).random()
     }
 
     var answer1 = when (operator1) {
@@ -55,24 +55,24 @@ class MathGame {
         operator1 = operators[(0..1).random()]
         operator2 = operators[(0..1).random()]
         number1 = if (operator1 == '+') {
-            (7..60).random()
+          (10..60).random()
         } else {
-            (2..11).random()
+            (4..11).random()
         }
         number2 = if (operator1 == '+') {
-            (7..60).random()
+          (10..60).random()
         } else {
-            (2..11).random()
+            (4..11).random()
         }
         number3 = if (operator2 == '+') {
-            (7..60).random()
+          (10..60).random()
         } else {
-            (2..11).random()
+            (4..11).random()
         }
         number4 = if (operator2 == '+') {
-            (7..60).random()
+          (10..60).random()
         } else {
-            (2..11).random()
+            (4..11).random()
         }
 
         answer1 = if (operator1 == '+') {

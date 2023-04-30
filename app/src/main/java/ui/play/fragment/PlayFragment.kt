@@ -1,5 +1,7 @@
 package ui.play.fragment
 
+import android.annotation.SuppressLint
+import android.content.res.Resources
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,6 +27,14 @@ class PlayFragment : BaseCommonFragment() {
         binding = FragmentPlayBinding.inflate(layoutInflater)
         val view = binding.root
 
+        binding.scrollHandLottieAnimationView.playAnimation()
+        binding.mathAnimation.playAnimation()
+        binding.speedAnimation.playAnimation()
+        binding.patienceAnimation.playAnimation()
+        binding.actionAnimation.playAnimation()
+        binding.visionAnimation.playAnimation()
+        binding.memoryAnimation.playAnimation()
+
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
 
@@ -41,6 +51,17 @@ class PlayFragment : BaseCommonFragment() {
         binding.visionConstraintLayout.setOnClickListener(this)
         binding.patienceConstraintLayout.setOnClickListener(this)
         binding.speedConstraintLayout.setOnClickListener(this)
+
+        binding.scrollViewPlay.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            println("---------------------------------------")
+            val totalHeight = binding.scrollViewPlay.getChildAt(0).height
+            val currentScrollHeight = binding.scrollViewPlay.height + scrollY
+            if (totalHeight <= currentScrollHeight) {
+                binding.scrollHandLottieAnimationView.visibility = View.INVISIBLE
+            } else {
+                binding.scrollHandLottieAnimationView.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onClick(view: View?) {

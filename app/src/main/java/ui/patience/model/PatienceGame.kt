@@ -3,13 +3,13 @@ package ui.patience.model
 import android.content.res.Resources
 
 class PatienceGame {
-    var left = (-Resources.getSystem().displayMetrics.widthPixels.toFloat() / 2) - 100
+    var left = (-Resources.getSystem().displayMetrics.widthPixels.toFloat() / 2) - 130
         private set
-    var right = (Resources.getSystem().displayMetrics.widthPixels.toFloat() / 2) + 100
+    var right = (Resources.getSystem().displayMetrics.widthPixels.toFloat() / 2) + 130
         private set
-    var top = (-Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2) - 128
+    var top = (-Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2) - 160
         private set
-    var bottom = (Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2) + 128
+    var bottom = (Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2) + 160
         private set
 
     var score: Double = 0.0

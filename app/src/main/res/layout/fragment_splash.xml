@@ -19,11 +19,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView"
-        style="@style/BlackTextView"
+        style="@style/WhiteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_32dp"
         android:text="@string/by_fbf"
+        android:textColor="@color/black"
         android:textSize="@dimen/_16sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"

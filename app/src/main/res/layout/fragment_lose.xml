@@ -19,7 +19,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/bestScoreTextView"
-            style="@style/BlackTextView"
+            style="@style/WhiteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_16dp"
@@ -32,7 +32,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/bestScoreNumberTextView"
-            style="@style/BlackTextView"
+            style="@style/WhiteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8dp"
@@ -45,7 +45,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/scoreTextView"
-            style="@style/BlackTextView"
+            style="@style/WhiteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32dp"
@@ -57,7 +57,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/scoreNumberTextView"
-            style="@style/BlackTextView"
+            style="@style/WhiteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8dp"
