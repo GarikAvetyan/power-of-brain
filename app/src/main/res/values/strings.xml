@@ -34,4 +34,16 @@
     <string name="descriptionSpeed">Click on the green tile continuously!</string>
     <string name="by_fbf">FROM FBF</string>
     <string name="play_text">PLAY</string>
+    <string name="settings">Settings</string>
+    <string name="volume_status_on">Volume status: ON</string>
+    <string name="volume_status_off">Volume status: OFF</string>
+    <string name="ads_status_on">Ads status: ON</string>
+    <string name="ads_status_off">Ads status: OFF</string>
+    <string name="math_game">Math Game</string>
+    <string name="the_best_score">The Best Score:</string>
+    <string name="speed_game">Speed Game</string>
+    <string name="patience_game">Patience Game</string>
+    <string name="action_game">Action Game</string>
+    <string name="vision_game">Vision Game</string>
+    <string name="memory_game">Memory Game</string>
 </resources>

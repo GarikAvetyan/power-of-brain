@@ -1,0 +1,430 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    tools:context="ui.awards.fragment.AwardsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gameBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_64dp"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/backImageButton"
+            style="@style/MainView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16dp"
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:background="@drawable/shape_button"
+            app:layout_constraintBottom_toBottomOf="@+id/backImageButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backImageButton">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/addHeartImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_4dp"
+                android:src="@drawable/add_heart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/heartCountTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/heartCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4dp"
+                android:gravity="center"
+                android:maxLength="8"
+                android:text="@string/_0"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/addHeartImageView"
+                app:layout_constraintEnd_toStartOf="@id/heartImageView"
+                app:layout_constraintStart_toEndOf="@id/addHeartImageView"
+                app:layout_constraintTop_toTopOf="@+id/addHeartImageView" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/heartImageView"
+                android:layout_width="@dimen/_30dp"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginHorizontal="@dimen/_4dp"
+                android:src="@drawable/heart"
+                app:layout_constraintBottom_toBottomOf="@+id/addHeartImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/heartCountTextView"
+                app:layout_constraintTop_toTopOf="@+id/addHeartImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/mathGameTextView"
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/math_game"
+                android:textSize="@dimen/_32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mathGameConstraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:background="@drawable/shape_red"
+                app:layout_constraintStart_toStartOf="@+id/mathGameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/mathGameTextView">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mathGameBestScore"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_4dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:text="@string/the_best_score"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mathGameBestScoreNumber"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@+id/mathGameBestScore"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/mathGameBestScore"
+                    app:layout_constraintTop_toTopOf="@+id/mathGameBestScore" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/mathGameConstraintLayout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/speedGameTextView"
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/speed_game"
+                android:textSize="@dimen/_32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/speedGameConstraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:background="@drawable/shape_green"
+                app:layout_constraintStart_toStartOf="@+id/speedGameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/speedGameTextView">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speedGameBestScore"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_4dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:text="@string/the_best_score"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speedGameBestScoreNumber"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@+id/speedGameBestScore"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/speedGameBestScore"
+                    app:layout_constraintTop_toTopOf="@+id/speedGameBestScore" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/speedGameConstraintLayout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patienceGameTextView"
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/patience_game"
+                android:textSize="@dimen/_32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/patienceGameConstraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:background="@drawable/shape_light_blue"
+                app:layout_constraintStart_toStartOf="@+id/patienceGameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/patienceGameTextView">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/patienceGameBestScore"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_4dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:text="@string/the_best_score"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/patienceGameBestScoreNumber"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@+id/patienceGameBestScore"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/patienceGameBestScore"
+                    app:layout_constraintTop_toTopOf="@+id/patienceGameBestScore" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/patienceGameConstraintLayout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actionGameTextView"
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/action_game"
+                android:textSize="@dimen/_32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/actionGameConstraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:background="@drawable/shape_yellow"
+                app:layout_constraintStart_toStartOf="@+id/actionGameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/actionGameTextView">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actionGameBestScore"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_4dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:text="@string/the_best_score"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actionGameBestScoreNumber"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@+id/actionGameBestScore"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/actionGameBestScore"
+                    app:layout_constraintTop_toTopOf="@+id/actionGameBestScore" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/actionGameConstraintLayout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/visionGameTextView"
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/vision_game"
+                android:textSize="@dimen/_32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/visionGameConstraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:background="@drawable/shape_gray"
+                app:layout_constraintStart_toStartOf="@+id/visionGameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/visionGameTextView">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/visionGameBestScore"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_4dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:text="@string/the_best_score"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/visonGameBestScoreNumber"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@+id/visionGameBestScore"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/visionGameBestScore"
+                    app:layout_constraintTop_toTopOf="@+id/visionGameBestScore" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/visionGameConstraintLayout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/memoryGameTextView"
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/memory_game"
+                android:textSize="@dimen/_32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/memoryGameConstraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:background="@drawable/shape_purple"
+                app:layout_constraintStart_toStartOf="@+id/memoryGameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/memoryGameTextView">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/memoryGameBestScore"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_4dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:text="@string/the_best_score"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/memoryGameBestScoreNumber"
+                    style="@style/WhiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@+id/memoryGameBestScore"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/memoryGameBestScore"
+                    app:layout_constraintTop_toTopOf="@+id/memoryGameBestScore" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/memoryGameConstraintLayout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

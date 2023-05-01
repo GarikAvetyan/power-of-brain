@@ -53,7 +53,6 @@ class PlayFragment : BaseCommonFragment() {
         binding.speedConstraintLayout.setOnClickListener(this)
 
         binding.scrollViewPlay.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-            println("---------------------------------------")
             val totalHeight = binding.scrollViewPlay.getChildAt(0).height
             val currentScrollHeight = binding.scrollViewPlay.height + scrollY
             if (totalHeight <= currentScrollHeight) {

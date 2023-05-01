@@ -170,12 +170,12 @@ class PatienceFragment : BaseCommonFragment(), View.OnTouchListener {
                 binding.bait.animate()
                     .translationX(patienceGame.endpointCoordinate)
                 binding.bait.animate().translationY(patienceGame.endpointDeviation)
-                binding.bait.animate().duration = 850
+                binding.bait.animate().duration = 900
             } else {
                 binding.bait.animate()
                     .translationY(patienceGame.endpointCoordinate)
                 binding.bait.animate().translationX(patienceGame.endpointDeviation)
-                binding.bait.animate().duration = 850
+                binding.bait.animate().duration = 1000
             }
             patienceGame.update()
         }, 400)

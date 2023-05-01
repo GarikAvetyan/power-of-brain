@@ -1,0 +1,118 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ui.settinigs.fragment.SettingsFragment">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/backImageButton"
+        android:layout_width="@dimen/_50dp"
+        android:layout_height="@dimen/_50dp"
+        android:layout_margin="@dimen/_16dp"
+        android:src="@drawable/back"
+        android:tint="@color/white"
+        android:background="@drawable/blue_button1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_60dp"
+        android:layout_marginVertical="@dimen/_128dp"
+        android:background="@drawable/blue_button1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backImageButton">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/settingsTextView"
+            style="@style/WhiteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="@string/settings"
+            android:textSize="@dimen/_32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/settingsAnimation"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_256dp"
+            android:layout_margin="@dimen/_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsTextView"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/settings_animation" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/voiceConstraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            app:layout_constraintBottom_toTopOf="@+id/adsConstraintLayout"
+            app:layout_constraintEnd_toEndOf="@+id/settingsAnimation"
+            app:layout_constraintStart_toStartOf="@+id/settingsAnimation"
+            app:layout_constraintTop_toBottomOf="@+id/settingsAnimation">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/voiceImageView"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:src="@drawable/item_volume"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:text="@string/volume_status_on"
+                app:layout_constraintBottom_toBottomOf="@+id/voiceImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/voiceImageView"
+                app:layout_constraintTop_toTopOf="@+id/voiceImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/adsConstraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/voiceConstraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/voiceConstraintLayout">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/adsImageView"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:src="@drawable/item_ads"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/WhiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:text="@string/ads_status_on"
+                app:layout_constraintBottom_toBottomOf="@+id/adsImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/adsImageView"
+                app:layout_constraintTop_toTopOf="@+id/adsImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

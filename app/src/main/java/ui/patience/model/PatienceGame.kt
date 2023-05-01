@@ -7,7 +7,7 @@ class PatienceGame {
         private set
     var right = (Resources.getSystem().displayMetrics.widthPixels.toFloat() / 2) + 130
         private set
-    var top = (-Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2) - 160
+    var top = (-Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2) - 120
         private set
     var bottom = (Resources.getSystem().displayMetrics.heightPixels.toFloat() / 2) + 160
         private set
