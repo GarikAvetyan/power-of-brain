@@ -16,6 +16,8 @@ import ui.memory.fragment.MemoryFragment
 import ui.patience.fragment.PatienceFragment
 import ui.speed.fragment.SpeedFragment
 import ui.vision.fragment.VisionFragment
+import util.Constants
+import util.Preferance
 
 class PlayFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentPlayBinding
@@ -37,6 +39,7 @@ class PlayFragment : BaseCommonFragment() {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         return view
     }
@@ -64,9 +67,11 @@ class PlayFragment : BaseCommonFragment() {
     }
 
     override fun onClick(view: View?) {
+        if (soundEnable) {
+            soundClick.start()
+        }
         when (view) {
             binding.backImageButton -> {
-                soundClick.start()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@PlayFragment)
                         .commit()
@@ -74,32 +79,26 @@ class PlayFragment : BaseCommonFragment() {
                 }
             }
             binding.mathConstraintLayout -> {
-                soundClick.start()
                 val mathFragment = MathFragment()
                 replaceFragment(mathFragment)
             }
             binding.actionConstraintLayout -> {
-                soundClick.start()
                 val actionFragment = ActionFragment()
                 replaceFragment(actionFragment)
             }
             binding.memoryConstraintLayout -> {
-                soundClick.start()
                 val memoryFragment = MemoryFragment()
                 replaceFragment(memoryFragment)
             }
             binding.visionConstraintLayout -> {
-                soundClick.start()
                 val visionFragment = VisionFragment()
                 replaceFragment(visionFragment)
             }
             binding.patienceConstraintLayout -> {
-                soundClick.start()
                 val patienceFragment = PatienceFragment()
                 replaceFragment(patienceFragment)
             }
             binding.speedConstraintLayout -> {
-                soundClick.start()
                 val speedFragment = SpeedFragment()
                 replaceFragment(speedFragment)
             }

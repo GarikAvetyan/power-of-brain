@@ -15,4 +15,6 @@ object Constants {
     const val PATIENCE = "Patience"
     const val SPEED = "Speed"
 
+    const val SOUND_ENABLE = "SOUND_ENABLE"
+
 }

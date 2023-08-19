@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 import ui.action.model.ActionGame
 import ui.lose.fragment.LoseFragment
 import util.Constants
+import util.Preferance
 
 class ActionFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentActionBinding
@@ -37,6 +38,7 @@ class ActionFragment : BaseCommonFragment() {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         tiles = listOf(
             binding.tile1ImageView,
@@ -107,7 +109,9 @@ class ActionFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
-                soundClick.start()
+                if (soundEnable) {
+                    soundClick.start()
+                }
                 timer.cancel()
                 requireActivity().supportFragmentManager.apply {
                     beginTransaction().remove(this@ActionFragment)
@@ -116,9 +120,11 @@ class ActionFragment : BaseCommonFragment() {
                     actionGame.clear()
                 }
             }
+
             binding.tableConstraintLayout -> {
                 lose()
             }
+
             binding.tile1ImageView -> {
                 if (actionGame.tiles[0].black) {
                     win(0)
@@ -126,6 +132,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile2ImageView -> {
                 if (actionGame.tiles[1].black) {
                     win(1)
@@ -133,6 +140,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile3ImageView -> {
                 if (actionGame.tiles[2].black) {
                     win(2)
@@ -140,6 +148,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile4ImageView -> {
                 if (actionGame.tiles[3].black) {
                     win(3)
@@ -147,6 +156,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile5ImageView -> {
                 if (actionGame.tiles[4].black) {
                     win(4)
@@ -154,6 +164,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile6ImageView -> {
                 if (actionGame.tiles[5].black) {
                     win(5)
@@ -161,6 +172,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile7ImageView -> {
                 if (actionGame.tiles[6].black) {
                     win(6)
@@ -168,6 +180,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile8ImageView -> {
                 if (actionGame.tiles[7].black) {
                     win(7)
@@ -175,6 +188,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile9ImageView -> {
                 if (actionGame.tiles[8].black) {
                     win(8)
@@ -182,6 +196,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile10ImageView -> {
                 if (actionGame.tiles[9].black) {
                     win(9)
@@ -189,6 +204,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile11ImageView -> {
                 if (actionGame.tiles[10].black) {
                     win(10)
@@ -196,11 +212,13 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile12ImageView -> {
                 if (actionGame.tiles[11].black) {
                     win(11)
                 }
             }
+
             binding.tile13ImageView -> {
                 if (actionGame.tiles[12].black) {
                     win(12)
@@ -208,6 +226,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile14ImageView -> {
                 if (actionGame.tiles[13].black) {
                     win(13)
@@ -215,6 +234,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile15ImageView -> {
                 if (actionGame.tiles[14].black) {
                     win(14)
@@ -222,6 +242,7 @@ class ActionFragment : BaseCommonFragment() {
                     lose()
                 }
             }
+
             binding.tile16ImageView -> {
                 if (actionGame.tiles[15].black) {
                     win(15)

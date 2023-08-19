@@ -16,6 +16,7 @@ import kotlinx.coroutines.*
 import ui.lose.fragment.LoseFragment
 import ui.math.model.MathGame
 import util.Constants
+import util.Preferance
 
 class MathFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentMathBinding
@@ -59,6 +60,7 @@ class MathFragment : BaseCommonFragment() {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         millisinFuture = 6000L
         mathGame = MathGame()
@@ -84,7 +86,9 @@ class MathFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
-                soundClick.start()
+                if (soundEnable) {
+                    soundClick.start()
+                }
                 isStart = false
                 timer.cancel()
                 timerWinAnimation.cancel()

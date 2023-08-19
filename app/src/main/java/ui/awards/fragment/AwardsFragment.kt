@@ -12,6 +12,8 @@ import com.fbf.powerofbrain.databinding.FragmentAwardsBinding
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import util.Constants
+import util.Preferance
 
 class AwardsFragment : BaseCommonFragment() {
 
@@ -26,6 +28,7 @@ class AwardsFragment : BaseCommonFragment() {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         return view
     }
@@ -53,6 +56,9 @@ class AwardsFragment : BaseCommonFragment() {
     }
 
     override fun onClick(view: View?) {
+        if (soundEnable) {
+            soundClick.start()
+        }
         when (view) {
             binding.backImageButton -> {
                 soundClick.start()

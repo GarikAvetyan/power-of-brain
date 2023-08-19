@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import ui.lose.fragment.LoseFragment
 import ui.speed.model.SpeedGame
 import util.Constants
+import util.Preferance
 
 
 class SpeedFragment : BaseCommonFragment() {
@@ -39,6 +40,7 @@ class SpeedFragment : BaseCommonFragment() {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         speedGame = SpeedGame()
 
@@ -61,7 +63,9 @@ class SpeedFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
-                soundClick.start()
+                if (soundEnable) {
+                    soundClick.start()
+                }
                 timer.cancel()
                 play.cancel()
                 requireActivity().supportFragmentManager.apply {
@@ -70,6 +74,7 @@ class SpeedFragment : BaseCommonFragment() {
                     popBackStack()
                 }
             }
+
             binding.grayButton -> {
                 win()
             }

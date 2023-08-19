@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import ui.lose.fragment.LoseFragment
 import ui.vision.model.VisionGame
 import util.Constants
+import util.Preferance
 
 class VisionFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentVisionBinding
@@ -74,6 +75,7 @@ class VisionFragment : BaseCommonFragment() {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         images = listOf(
             binding.imageView1,
@@ -132,7 +134,9 @@ class VisionFragment : BaseCommonFragment() {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
-                soundClick.start()
+                if (soundEnable) {
+                    soundClick.start()
+                }
                 isStart = false
                 timer.cancel()
                 timerWinAnimation.cancel()
@@ -142,30 +146,39 @@ class VisionFragment : BaseCommonFragment() {
                     popBackStack()
                 }
             }
+
             binding.blueCircleImageView -> {
                 correctChoice(0)
             }
+
             binding.greenCircleImageView -> {
                 correctChoice(1)
             }
+
             binding.redCircleImageView -> {
                 correctChoice(2)
             }
+
             binding.blueTriangleImageView -> {
                 correctChoice(3)
             }
+
             binding.greenTriangleImageView -> {
                 correctChoice(4)
             }
+
             binding.redTriangleImageView -> {
                 correctChoice(5)
             }
+
             binding.blueSquareImageView -> {
                 correctChoice(6)
             }
+
             binding.greenSquareImageView -> {
                 correctChoice(7)
             }
+
             binding.redSquareImageView -> {
                 correctChoice(8)
             }
@@ -213,9 +226,11 @@ class VisionFragment : BaseCommonFragment() {
                 3 -> {
                     millisinFuture += 2000L
                 }
+
                 6 -> {
                     millisinFuture += 1000L
                 }
+
                 10 -> {
                     millisinFuture += 2000L
                 }

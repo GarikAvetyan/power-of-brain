@@ -5,5 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 
 abstract class BaseCommonFragment : Fragment(), View.OnClickListener {
-    lateinit var soundClick:MediaPlayer
+    lateinit var soundClick: MediaPlayer
+    var soundEnable: Boolean = true
 }

@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 import ui.lose.fragment.LoseFragment
 import ui.memory.model.MemoryGame
 import util.Constants
+import util.Preferance
 
 class MemoryFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentMemoryBinding
@@ -65,6 +66,7 @@ class MemoryFragment : BaseCommonFragment() {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         memoryGame = MemoryGame()
         binding.winLottieAnimationView.visibility = View.INVISIBLE
@@ -142,8 +144,9 @@ class MemoryFragment : BaseCommonFragment() {
                 millishInFuture = 3200
                 countDownInterval = 100
                 minusSize = 1f
-
-                soundClick.start()
+                if (soundEnable) {
+                    soundClick.start()
+                }
                 isStart = false
                 timer.cancel()
                 timerWinAnimation.cancel()
@@ -153,75 +156,99 @@ class MemoryFragment : BaseCommonFragment() {
                     popBackStack()
                 }
             }
+
             binding.point1TextView -> {
                 check(binding.point1TextView)
             }
+
             binding.point2TextView -> {
                 check(binding.point2TextView)
             }
+
             binding.point3TextView -> {
                 check(binding.point3TextView)
             }
+
             binding.point4TextView -> {
                 check(binding.point4TextView)
             }
+
             binding.point5TextView -> {
                 check(binding.point5TextView)
             }
+
             binding.point6TextView -> {
                 check(binding.point6TextView)
             }
+
             binding.point7TextView -> {
                 check(binding.point7TextView)
             }
+
             binding.point8TextView -> {
                 check(binding.point8TextView)
             }
+
             binding.point9TextView -> {
                 check(binding.point9TextView)
             }
+
             binding.point10TextView -> {
                 check(binding.point10TextView)
             }
+
             binding.point11TextView -> {
                 check(binding.point11TextView)
             }
+
             binding.point12TextView -> {
                 check(binding.point12TextView)
             }
+
             binding.point13TextView -> {
                 check(binding.point13TextView)
             }
+
             binding.point14TextView -> {
                 check(binding.point14TextView)
             }
+
             binding.point15TextView -> {
                 check(binding.point15TextView)
             }
+
             binding.point16TextView -> {
                 check(binding.point16TextView)
             }
+
             binding.point17TextView -> {
                 check(binding.point17TextView)
             }
+
             binding.point18TextView -> {
                 check(binding.point18TextView)
             }
+
             binding.point19TextView -> {
                 check(binding.point19TextView)
             }
+
             binding.point20TextView -> {
                 check(binding.point20TextView)
             }
+
             binding.point21TextView -> {
                 check(binding.point21TextView)
             }
+
             binding.point22TextView -> {
                 check(binding.point22TextView)
             }
+
             binding.point23TextView -> {
                 check(binding.point23TextView)
             }
+
             binding.point24TextView -> {
                 check(binding.point24TextView)
             }
@@ -246,17 +273,20 @@ class MemoryFragment : BaseCommonFragment() {
                     countDownInterval = 100
                     minusSize = 0.64f
                 }
-                8->{
+
+                8 -> {
                     millishInFuture = 6400
                     countDownInterval = 100
                     minusSize = 0.5f
                 }
-                12->{
+
+                12 -> {
                     millishInFuture = 12800
                     countDownInterval = 100
                     minusSize = 0.25f
                 }
-                18->{
+
+                18 -> {
                     millishInFuture = 16000
                     countDownInterval = 100
                     minusSize = 0.2f

@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import ui.lose.fragment.LoseFragment
 import ui.patience.model.PatienceGame
 import util.Constants
+import util.Preferance
 
 
 class PatienceFragment : BaseCommonFragment(), View.OnTouchListener {
@@ -78,6 +79,7 @@ class PatienceFragment : BaseCommonFragment(), View.OnTouchListener {
 
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         patienceGame = PatienceGame()
 
@@ -97,7 +99,9 @@ class PatienceFragment : BaseCommonFragment(), View.OnTouchListener {
     override fun onClick(view: View?) {
         when (view) {
             binding.backImageButton -> {
-                soundClick.start()
+                if (soundEnable) {
+                    soundClick.start()
+                }
                 timer.cancel()
                 frequency.cancel()
                 isStart = false

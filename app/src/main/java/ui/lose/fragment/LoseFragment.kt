@@ -14,6 +14,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ui.home.fragment.HomeFragment
 import util.Constants
+import util.Preferance
 
 class LoseFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentLoseBinding
@@ -28,6 +29,7 @@ class LoseFragment : BaseCommonFragment() {
 
         soundClick =
         MediaPlayer.create(requireContext(), R.raw.sound_click)
+        soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         binding.scoreNumberTextView.text = arguments?.get("score").toString()
 
@@ -82,6 +84,9 @@ class LoseFragment : BaseCommonFragment() {
     }
 
     override fun onClick(view: View?) {
+        if (soundEnable) {
+            soundClick.start()
+        }
         when (view) {
             binding.restartImageView -> {
                 soundClick.start()
