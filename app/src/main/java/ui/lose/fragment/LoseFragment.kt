@@ -9,6 +9,10 @@ import android.view.ViewGroup
 import com.fbf.common.base.BaseCommonFragment
 import com.fbf.powerofbrain.R
 import com.fbf.powerofbrain.databinding.FragmentLoseBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,7 +22,7 @@ import util.Preferance
 
 class LoseFragment : BaseCommonFragment() {
     private lateinit var binding: FragmentLoseBinding
-
+    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +36,19 @@ class LoseFragment : BaseCommonFragment() {
         soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
 
         binding.scoreNumberTextView.text = arguments?.get("score").toString()
+
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(requireActivity(),"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                mInterstitialAd = interstitialAd
+                mInterstitialAd?.show(requireActivity())
+            }
+        })
 
         return view
     }

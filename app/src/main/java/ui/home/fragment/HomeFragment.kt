@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.fbf.common.base.BaseCommonFragment
 import com.fbf.powerofbrain.R
 import com.fbf.powerofbrain.databinding.FragmentHomeBinding
+import com.google.android.gms.ads.AdRequest
 import ui.awards.fragment.AwardsFragment
 import ui.play.fragment.PlayFragment
 import ui.settinigs.fragment.SettingsFragment
@@ -32,6 +33,9 @@ class HomeFragment : BaseCommonFragment() {
         soundClick =
             MediaPlayer.create(requireContext(), R.raw.sound_click)
         soundEnable = Preferance.getBooleanPreferance(requireActivity(), Constants.SOUND_ENABLE)
+
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
 
         return view
     }
