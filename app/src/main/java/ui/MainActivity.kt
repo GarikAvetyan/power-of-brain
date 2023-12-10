@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.fbf.common.base.BaseCommonActivity
 import com.fbf.powerofbrain.databinding.ActivityMainBinding
+import com.google.android.gms.ads.MobileAds
 import ui.splash.fragment.SplashFragment
 
 class MainActivity : BaseCommonActivity() {
@@ -27,6 +28,8 @@ class MainActivity : BaseCommonActivity() {
         windowInsetsController.systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+
+        MobileAds.initialize(this) {}
 
         supportFragmentManager.beginTransaction()
             .replace(binding.mainFrameLayout.id, splashFragment)
