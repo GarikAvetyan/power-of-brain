@@ -47,12 +47,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
-    implementation project(path:':common')
-    implementation project(path:':room')
+    implementation project(path: ':common')
+    implementation project(path: ':room')
     kapt "androidx.room:room-compiler:2.4.2"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    implementation 'com.google.android.gms:play-services-ads:22.4.0'
 
 }
